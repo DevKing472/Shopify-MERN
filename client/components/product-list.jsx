@@ -30,7 +30,7 @@ export default class ProductList extends React.Component {
   render() {
     const { products } = this.state;
     return (
-      <div className="row">
+      <div className="row mt-5">
         {
           products.map(product => {
             return (

@@ -6,7 +6,7 @@ export default class Header extends React.Component {
 
     return (
       <nav className="navbar text-white navbar-expand-lg navbar-dark bg-dark">
-        <h3>Wicked Sales</h3>
+        <h3 className ="ml-5">$ Wicked Sales</h3>
       </nav>
     );
   }
