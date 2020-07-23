@@ -30,8 +30,8 @@ app.get('/api/products', (req, res, next) => {
   `;
 
   db.query(sql)
-    .then(response => {
-      res.json(response.rows);
+    .then(result => {
+      res.json(result.rows);
     })
     .catch(err => {
       next(err);
