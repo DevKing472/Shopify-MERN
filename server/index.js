@@ -38,6 +38,28 @@ app.get('/api/products', (req, res, next) => {
     });
 });
 
+app.get('/api/products/:productId', (req, res, next) => {
+  // { productId: '1'}
+  const id = req.params.productId;
+  const params = [id];
+  const sql = `
+      select *
+        from "products"
+        where "productId" = $1;
+      `;
+  db.query(sql, params)
+    .then(result => {
+      if (result.rows.length === 0) {
+        next(new ClientError(`Cannot find product with macthing id ${id}, 404`));
+      } else {
+        res.json(result.rows[0]);
+      }
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
