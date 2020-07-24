@@ -50,7 +50,7 @@ app.get('/api/products/:productId', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       if (result.rows.length === 0) {
-        next(new ClientError(`Cannot find product with macthing id ${id}, 404`));
+        next(new ClientError(`Cannot find product with macthing id ${id}`, 404));
       } else {
         res.json(result.rows[0]);
       }
