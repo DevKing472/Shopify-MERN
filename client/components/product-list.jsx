@@ -34,7 +34,7 @@ export default class ProductList extends React.Component {
         {
           products.map(product => {
             return (
-              <div key={product.productId} className="card col-4">
+              <div key={product.productId} className="col-4">
                 <ProductListItem item={product} />
               </div>
             );
