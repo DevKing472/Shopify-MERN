@@ -28,13 +28,15 @@ export default class ProductList extends React.Component {
   }
 
   render() {
+    const { setView } = this.props;
     const { products } = this.state;
     return (
-      <div className="row mt-5">
+      <div className="row">
         {
           products.map(product => {
+            const { productId } = product;
             return (
-              <div key={product.productId} className="col-4">
+              <div key={product.productId} className="col-4" onClick={() => setView('details', { productId })}>
                 <ProductListItem item={product} />
               </div>
             );
