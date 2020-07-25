@@ -6,7 +6,7 @@ export default function ProductListItem(props) {
     <div className="card" style= {{ width: '24rem' }}>
       <img src={image} className="card-img-top img-responsive image-card" />
       <div className="card-body">
-        <p className="price-text">{price}</p>
+        <p className="price-text">${price}.00</p>
         <h3 className="card-title">{name}</h3>
         <p className="card-text">{shortDescription}</p>
       </div>
