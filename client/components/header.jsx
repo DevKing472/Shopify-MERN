@@ -9,7 +9,7 @@ export default class Header extends React.Component {
         <h3 className ="ml-5">{this.props.title}</h3>
         <div className="cart">
           <p className="m-0 cart-item-number">{cartItemCount === 1 ? cartItemCount + ' Item' : cartItemCount + ' Items'}</p>
-          <i className="fas mt-1 mx-2 fa-shopping-cart"></i>
+          <i className="fas mb-1 mx-2 fa-shopping-cart"></i>
         </div>
       </nav>
     );

@@ -44,3 +44,6 @@ img {
   display: flex;
 }
 
+.cart > i {
+  font-size: 24px;
+}
