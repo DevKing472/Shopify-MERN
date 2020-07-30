@@ -7,6 +7,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      cart: [],
       message: null,
       isLoading: true,
       view: {
@@ -18,11 +19,36 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    this.getCartItems();
     fetch('/api/health-check')
       .then(res => res.json())
       .then(data => this.setState({ message: data.message || data.error }))
       .catch(err => this.setState({ message: err.message }))
       .finally(() => this.setState({ isLoading: false }));
+  }
+
+  getCartItems() {
+    fetch('/api/cart')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ cart: data });
+      })
+      .catch(error => { console.error(error); });
+  }
+
+  addToCart(product) {
+    fetch('/api/cart/', {
+      body: JSON.stringify(product),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(result => result.json)
+      .then(data => {
+        const newData = [...this.state.cart];
+        newData.push(data);
+        this.setState({ cart: newData });
+      });
   }
 
   setView(name, params) {
@@ -49,7 +75,7 @@ export default class App extends React.Component {
 
     return (
       <div>
-        <Header title={'$Wicked Sales'}/>
+        <Header title={'$Wicked Sales'} cartItemCount={this.state.cart.length}/>
         <div className= "container-view">
           {this.userView()}
         </div>

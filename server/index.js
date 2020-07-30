@@ -136,9 +136,9 @@ app.post('/api/cart', (req, res, next) => {
       "p"."image",
       "p"."name",
       "p"."shortDescription"
-from "cartItems" as "c"
-join "products" as "p" using ("productId")
-where "c"."cartItemId" = $1`;
+      from "cartItems" as "c"
+      join "products" as "p" using ("productId")
+      where "c"."cartItemId" = $1`;
         const value = [cartItemId];
         return db.query(sql, value)
           .then(response => {
