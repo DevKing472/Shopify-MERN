@@ -1,4 +1,4 @@
-body { 
+body {
   background-color: #f5f5f5;
   font-family: 'Mulish', sans-serif;
 }
@@ -38,4 +38,12 @@ img {
 
 .card-title {
   font-weight: bolder;
+}
+
+.cart {
+  display: flex;
+}
+
+.cart > i {
+  font-size: 24px;
 }
