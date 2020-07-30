@@ -16,6 +16,7 @@ export default class App extends React.Component {
       }
     };
     this.setView = this.setView.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +39,7 @@ export default class App extends React.Component {
 
   addToCart(product) {
     fetch('/api/cart/', {
+      method: 'POST',
       body: JSON.stringify(product),
       headers: {
         'Content-Type': 'application/json'
@@ -65,7 +67,7 @@ export default class App extends React.Component {
     }
     if (name === 'details') {
       return (
-        <ProductDetails params={params} setView={this.setView} />
+        <ProductDetails params={params} setView={this.setView} addToCart={this.addToCart} />
       );
     }
     return null;
