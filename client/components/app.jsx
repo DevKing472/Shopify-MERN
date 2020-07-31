@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import CartSummary from './cart-summary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.userView = this.userView.bind(this);
   }
 
   componentDidMount() {
@@ -45,11 +47,9 @@ export default class App extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-      .then(result => result.json)
+      .then(result => result.json())
       .then(data => {
-        const newData = [...this.state.cart];
-        newData.push(data);
-        this.setState({ cart: newData });
+        this.setState({ cart: this.state.cart.concat(data) });
       });
   }
 
@@ -69,6 +69,10 @@ export default class App extends React.Component {
       return (
         <ProductDetails params={params} setView={this.setView} addToCart={this.addToCart} />
       );
+    } else if (name === 'cart') {
+      return (
+        <CartSummary setView={this.setView} array={this.state.cart} />
+      );
     }
     return null;
   }
@@ -77,7 +81,7 @@ export default class App extends React.Component {
 
     return (
       <div>
-        <Header title={'$Wicked Sales'} cartItemCount={this.state.cart.length}/>
+        <Header title={'$Wicked Sales'} cartItemCount={this.state.cart.length} setView={this.setView}/>
         <div className= "container-view">
           {this.userView()}
         </div>

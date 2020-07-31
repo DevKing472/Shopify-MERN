@@ -30,6 +30,7 @@ export default class ProductDetails extends React.Component {
     if (!product) {
       return null;
     }
+    const newPrice = `$${(product.price / 100).toFixed(2)}`;
     return (
       <div className="product-detail-container">
         <div className="card">
@@ -43,7 +44,7 @@ export default class ProductDetails extends React.Component {
 
             <div className="short-description col">
               <h3 className="card-title">{product.name}</h3>
-              <h4 className="price">${product.price}.00</h4>
+              <h4 className="price">{newPrice}</h4>
               <p className="description">{product.shortDescription}</p>
               <button type="button" className="btn btn-info" onClick={() => { this.props.addToCart(this.state.product); }}>Add To Cart</button>
             </div>
