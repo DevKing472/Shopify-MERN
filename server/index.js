@@ -150,6 +150,35 @@ app.post('/api/cart', (req, res, next) => {
   }
 });
 
+app.post('/api/orders', (req, res, next) => {
+  const cartId = req.session.cartId;
+  const name = req.body.name;
+  const creditCard = req.body.creditCard;
+  const shippingAddress = req.body.shippingAddress;
+  if (!cartId) {
+    return res.status(400).send('No cart exists.');
+  }
+  if (!name) {
+    return res.status(400).send('Please insert your name.');
+  } else if (!creditCard) {
+    return res.status(400).send('Please insert your credit card.');
+  } else if (!shippingAddress) {
+    return res.status(400).send('Please insert the shipping Address.');
+  }
+  const params = [cartId, name, creditCard, shippingAddress];
+  const order = `
+              INSERT into "orders" ("orderId", "cartId", "name", "creditCard", "shippingAddress", "createdAt")
+              VALUES (default, $1, $2, $3, $4, default)
+              RETURNING *
+              `;
+  db.query(order, params)
+    .then(response => response.rows[0])
+    .then(data => {
+      res.status(201).json(data);
+    })
+    .catch(error => next(error));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
