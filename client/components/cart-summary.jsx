@@ -50,6 +50,9 @@ export default class CartSummary extends React.Component {
           </div>
           {this.displayCartItems()}
           <h3 className="total-price ml-5">{'Total Price: $' + this.displayTotalPrice()}</h3>
+
+          <button onClick={() => this.props.setView('checkout')} className="btn btn-primary mt-5 ml-10">Checkout</button>
+
         </div>
       </>
     );
