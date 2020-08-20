@@ -1,7 +1,7 @@
 # wicked-sales-js
 A full stack Node.js and React shopping cart app for random items.
 
-[Live Site](https://sales.juliusoh.com)
+[Live Site](https://shopify.juliusoh.com)
 
 # Features
 
