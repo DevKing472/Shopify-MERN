@@ -10,6 +10,12 @@ body {
   justify-content: center;
 }
 
+.card img:hover {
+  margin-left: 0 40px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
 .image-card {
   width: 100%;
   object-fit: contain;
@@ -19,12 +25,18 @@ body {
 img {
   width: 100%;
   object-fit: contain;
+
+}
+
+.hello {
+  cursor: pointer;
 }
 
 .container-view {
   padding-top: 4rem;
   padding-right: 3.5rem;
   padding-top: 4rem;
+  padding-left: 4rem;
 }
 
 .card-header > span {
@@ -42,9 +54,17 @@ img {
 
 .cart {
   display: flex;
+  cursor: pointer;
 }
 
 .cart > i {
   font-size: 24px;
 }
 
+.backButton {
+  cursor: pointer;
+}
+
+.card-header {
+  cursor: pointer;
+}

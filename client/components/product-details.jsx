@@ -34,7 +34,12 @@ export default class ProductDetails extends React.Component {
     return (
       <div className="product-detail-container">
         <div className="card">
-          <div className="card-header" onClick={() => setView('catalog', {})}><span><i className="fa fa-arrow-circle-left"></i></span>Back to Catalog</div>
+        </div>
+        <div className="col text-secondary backButton">
+          <span>
+            <i onClick={() => setView('catalog', {})} className="fas fa-angle-left mt-2  backButton"></i>
+          </span>
+          <span onClick={() => setView('catalog', {})} className="backButton">Back to catalog</span>
         </div>
         <div className="card-body">
           <div className="row">

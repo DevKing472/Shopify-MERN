@@ -76,33 +76,26 @@ export default class App extends React.Component {
       );
     } else if (name === 'checkout') {
       return (
-        <CheckoutForm placeOrder={this.placeOrder} setView={this.setView} />
+        <CheckoutForm cart={this.state.cart} placeOrder={this.placeOrder} setView={this.setView} />
       );
     }
     return null;
   }
 
-  placeOrder(object) {
+  placeOrder(order) {
     fetch('/api/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        name: object.name,
-        creditCard: object.creditCard,
-        shippingAddress: object.shippingAddress
-      })
+      body: JSON.stringify(order)
     })
       .then(response => response.json())
       .then(data => {
-        return this.setState(() => ({
-          cart: [],
-          view: {
-            name: 'catalog',
-            params: {}
-          }
-        }));
+        this.setState({
+          cart: []
+        }, () => this.setView('catalog', {}));
+
       });
   }
 
