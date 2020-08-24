@@ -4,9 +4,9 @@ export default class CheckoutForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: null,
-      creditCard: null,
-      shippingAddress: null
+      name: '',
+      creditCard: '',
+      shippingAddress: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,12 +26,7 @@ export default class CheckoutForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const orderInformation = {
-      name: this.state.name,
-      creditCard: this.state.creditCard,
-      shippingAddress: this.state.shippingAddress
-    };
-    this.props.placeOrder(orderInformation);
+    this.props.placeOrder(this.state);
     this.handleBackToCatalog();
   }
 
@@ -46,9 +41,9 @@ export default class CheckoutForm extends React.Component {
             <label htmlFor="name"><b>Name</b></label>
             <input type="text" id="name" className="mb-4" value={this.state.name} onChange={this.handleChange} />
             <label htmlFor="card"><b>Credit Card</b></label>
-            <input type="text" id="card" className="mb-4" value={this.state.creditCard} onChange={this.handleChange} />
+            <input type="text" id="creditCard" className="mb-4" value={this.state.creditCard} onChange={this.handleChange} />
             <label htmlFor="address"><b>Shipping Address</b></label>
-            <textarea type="textarea" id="address" className="mb-4" value={this.state.shippingAddress} rows="4" onChange={this.handleChange} />
+            <textarea type="textarea" id="shippingAddress" className="mb-4" value={this.state.shippingAddress} rows="4" onChange={this.handleChange} />
             <div className="d-flex justify-content-between">
               <div className="hello hover text-muted mb-4 pt-0 px-0 btn d-flex justify-content-start" onClick={() => setView('catalog', {})}>&lt; Continue Shopping</div>
               <button type="button" className="btn btn-primary" id="order" onClick={this.handleSubmit}>Place Order</button>
