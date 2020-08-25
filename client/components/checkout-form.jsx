@@ -33,7 +33,7 @@ export default class CheckoutForm extends React.Component {
   render() {
     const { setView } = this.props;
     const { name, creditCard, shippingAddress } = this.state;
-    const isEnabled = name.length > 0 && creditCard.length > 13 && shippingAddress.length > 6;
+    const isEnabled = name.length > 0 && creditCard.length > 0 && shippingAddress.length > 0;
     return (
       <div className="row mx-0">
         <div className="col-7 mx-auto d-flex flex-column">
