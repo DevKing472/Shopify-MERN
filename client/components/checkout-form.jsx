@@ -36,7 +36,7 @@ export default class CheckoutForm extends React.Component {
     const isEnabled = name.length > 0 && creditCard.length > 0 && shippingAddress.length > 0;
     return (
       <div className="row mx-0">
-        <div className="col-7 mx-auto d-flex flex-column">
+        <div className="col-12 mx-auto d-flex flex-column">
           <h2 className="mb-4"><b>My Cart</b></h2>
           <h5 className="d-flex align-items-center text-muted mb-4">Order Total: ${(this.getTotalPurchase() * 0.01).toFixed(2)}</h5>
           <form className="d-flex flex-column">

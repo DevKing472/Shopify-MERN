@@ -33,21 +33,21 @@ export default class ProductDetails extends React.Component {
     const newPrice = `$${(product.price / 100).toFixed(2)}`;
     return (
       <div className="product-detail-container">
-        <div className="card">
-        </div>
+
         <div className="col text-secondary backButton">
           <span>
             <i onClick={() => setView('catalog', {})} className="fas fa-angle-left mt-2  backButton"></i>
           </span>
           <span onClick={() => setView('catalog', {})} className="backButton">Back to catalog</span>
         </div>
+
         <div className="card-body">
           <div className="row">
             <div className="product-image col">
               <img className="card-img-top col-10" src={product.image} style={{ objectFit: 'contain', maxHeight: '500px' }} />
             </div>
 
-            <div className="short-description col">
+            <div className="short-description col-md-4">
               <h3 className="card-title">{product.name}</h3>
               <h4 className="price">{newPrice}</h4>
               <p className="description">{product.shortDescription}</p>
