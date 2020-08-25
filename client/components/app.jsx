@@ -106,7 +106,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Header title={'$Wicked Sales'} cartItemCount={this.state.cart.length} setView={this.setView}/>
-        <div className= "container-view">
+        <div className= "container-view cart-summary-container my-2 my-sm-3 p-0">
           {this.userView()}
         </div>
       </div>

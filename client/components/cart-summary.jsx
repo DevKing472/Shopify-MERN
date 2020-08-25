@@ -36,7 +36,7 @@ export default class CartSummary extends React.Component {
     return (
       <>
         <div className="container">
-          <div className="row">
+          <div className="row m-0">
             <div className="col text-secondary backButton">
               <span>
                 <i onClick={this.handleSetView} className="fas fa-angle-left mt-2 mr-2 backButton"></i>
@@ -44,7 +44,7 @@ export default class CartSummary extends React.Component {
               <span onClick={this.handleSetView} className="backButton">Back to catalog</span>
             </div>
           </div>
-          <div className="row">
+          <div className="row m-0">
             <h1><b>My Cart</b></h1>
 
           </div>
