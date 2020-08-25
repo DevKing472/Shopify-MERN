@@ -184,6 +184,7 @@ app.post('/api/orders', (req, res, next) => {
   db.query(order, params)
     .then(response => response.rows[0])
     .then(data => {
+      req.session.destroy();
       res.status(201).json(data);
     })
     .catch(error => next(error));

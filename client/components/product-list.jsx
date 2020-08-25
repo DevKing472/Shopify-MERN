@@ -36,7 +36,7 @@ export default class ProductList extends React.Component {
           products.map(product => {
             const { productId } = product;
             return (
-              <div key={product.productId} className="col-4" onClick={() => setView('details', { productId })}>
+              <div key={product.productId} className="col-4 d-flex justify-content-center" onClick={() => setView('details', { productId })}>
                 <ProductListItem item={product} />
               </div>
             );

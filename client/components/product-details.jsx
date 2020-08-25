@@ -44,7 +44,7 @@ export default class ProductDetails extends React.Component {
         <div className="card-body">
           <div className="row">
             <div className="product-image col">
-              <img src={product.image} />
+              <img className="card-img-top col-10" src={product.image} style={{ objectFit: 'contain', maxHeight: '500px' }} />
             </div>
 
             <div className="short-description col">

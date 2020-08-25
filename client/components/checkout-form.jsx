@@ -32,6 +32,8 @@ export default class CheckoutForm extends React.Component {
 
   render() {
     const { setView } = this.props;
+    const { name, creditCard, shippingAddress } = this.state;
+    const isEnabled = name.length > 0 && creditCard.length > 13 && shippingAddress.length > 6;
     return (
       <div className="row mx-0">
         <div className="col-7 mx-auto d-flex flex-column">
@@ -46,7 +48,7 @@ export default class CheckoutForm extends React.Component {
             <textarea type="textarea" id="shippingAddress" className="mb-4" value={this.state.shippingAddress} rows="4" onChange={this.handleChange} />
             <div className="d-flex justify-content-between">
               <div className="hello hover text-muted mb-4 pt-0 px-0 btn d-flex justify-content-start" onClick={() => setView('catalog', {})}>&lt; Continue Shopping</div>
-              <button type="button" className="btn btn-primary" id="order" onClick={this.handleSubmit}>Place Order</button>
+              <button type="button" className="btn btn-primary" id="order" disabled={!isEnabled} onClick={this.handleSubmit}>Place Order</button>
             </div>
           </form>
         </div>
