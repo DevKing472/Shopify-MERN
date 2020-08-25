@@ -68,3 +68,13 @@ img {
 .card-header {
   cursor: pointer;
 }
+
+/* portrait */
+@media screen and (max-width: 450px) {
+ .card {
+   display: grid;
+   grid-template-columns: 4fr;
+   padding: 1em;
+   grid-row-gap: 100px;
+ }
+}
