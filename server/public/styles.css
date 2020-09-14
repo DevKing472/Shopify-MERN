@@ -69,4 +69,9 @@ img {
   cursor: pointer;
 }
 
+.modal-contents {
+  max-width: 380px;
+  user-select: none;
+}
+
 
