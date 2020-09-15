@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import FrontModal from './front-modal';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,14 +14,16 @@ export default class App extends React.Component {
       message: null,
       isLoading: true,
       view: {
-        name: 'catalog',
+        name: 'front',
         params: {}
-      }
+      },
+      modalOpen: true
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.userView = this.userView.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -60,14 +63,24 @@ export default class App extends React.Component {
     this.setState({ view });
   }
 
+  closeModal() {
+    this.setState({ modalOpen: false });
+  }
+
   userView() {
     const { name, params } = this.state.view;
-    if (name === 'catalog') {
+    const modal = this.state.modalOpen ? <FrontModal close={this.closeModal}></FrontModal> : null;
+    if (name === 'front') {
+      return (
+        <div>
+          {modal}
+        </div>
+      );
+    } else if (name === 'catalog') {
       return (
         <ProductList setView={this.setView} />
       );
-    }
-    if (name === 'details') {
+    } else if (name === 'details') {
       return (
         <ProductDetails params={params} setView={this.setView} addToCart={this.addToCart} />
       );
@@ -106,6 +119,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Header title={'$Wicked Sales'} cartItemCount={this.state.cart.length} setView={this.setView}/>
+
         <div className= "container-view cart-summary-container my-2 my-sm-3 p-0">
           {this.userView()}
         </div>
