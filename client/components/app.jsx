@@ -5,6 +5,9 @@ import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import FrontModal from './front-modal';
+import FrontPage from './front-page';
+import Footer from './footer';
+import Transition from './transition';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,6 +17,7 @@ export default class App extends React.Component {
       message: null,
       isLoading: true,
       view: {
+
         name: 'front',
         params: {}
       },
@@ -72,9 +76,18 @@ export default class App extends React.Component {
     const modal = this.state.modalOpen ? <FrontModal close={this.closeModal}></FrontModal> : null;
     if (name === 'front') {
       return (
-        <div>
+        <>
           {modal}
-        </div>
+
+          <div id="page-container">
+            <div id="content-wrap">
+              <Transition key={name}>
+                <FrontPage setView={this.setView} />
+              </Transition>
+            </div>
+            <Footer />
+          </div>
+        </>
       );
     } else if (name === 'catalog') {
       return (
@@ -118,7 +131,7 @@ export default class App extends React.Component {
 
     return (
       <div>
-        <Header title={'Evolve Fitness and MMA'} cartItemCount={this.state.cart.length} setView={this.setView}/>
+        <Header title={'Shopify Fitness'} cartItemCount={this.state.cart.length} setView={this.setView}/>
 
         <div className= "container-view cart-summary-container my-2 my-sm-3 p-0">
           {this.userView()}
