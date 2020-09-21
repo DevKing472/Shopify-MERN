@@ -4,6 +4,7 @@ import { CSSTransitionGroup } from 'react-transition-group';
 export default function Transition(props) {
   return (
     <CSSTransitionGroup
+
       key={props.view}
       transitionName="transition"
       transitionAppear={true}
