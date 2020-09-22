@@ -76,7 +76,7 @@ export default class App extends React.Component {
     const modal = this.state.modalOpen ? <FrontModal close={this.closeModal}></FrontModal> : null;
     if (name === 'front') {
       return (
-        <>
+        <div>
           {modal}
 
           <div id="page-container">
@@ -87,23 +87,54 @@ export default class App extends React.Component {
             </div>
             <Footer />
           </div>
-        </>
+        </div>
       );
     } else if (name === 'catalog') {
       return (
-        <ProductList setView={this.setView} />
+        <div id="page-container">
+          <div id="content-wrap">
+            <Transition key={name}>
+              <ProductList setView={this.setView} params={params} />
+            </Transition>
+          </div>
+          <Footer />
+        </div>
       );
     } else if (name === 'details') {
       return (
-        <ProductDetails params={params} setView={this.setView} addToCart={this.addToCart} />
+        <div id="page-container">
+          <div id="content-wrap">
+            <Transition key={name}>
+              <ProductDetails params={params} setView={this.setView} addToCart={this.addToCart} />
+            </Transition>
+          </div>
+          <Footer />
+        </div>
+
       );
     } else if (name === 'cart') {
       return (
-        <CartSummary setView={this.setView} array={this.state.cart} />
+        <div id="page-container">
+          <div id="content-wrap">
+            <Transition key={name}>
+              <CartSummary setView={this.setView} array={this.state.cart} />
+            </Transition>
+          </div>
+          <Footer />
+        </div>
+
       );
     } else if (name === 'checkout') {
       return (
-        <CheckoutForm cart={this.state.cart} placeOrder={this.placeOrder} setView={this.setView} />
+        <div id="page-container">
+          <div id="content-wrap">
+            <Transition key={name}>
+              <CheckoutForm cart={this.state.cart} placeOrder={this.placeOrder} setView={this.setView} />
+            </Transition>
+          </div>
+          <Footer />
+        </div>
+
       );
     }
     return null;

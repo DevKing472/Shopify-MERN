@@ -15,7 +15,9 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('/api/products', (req, res, next) => {
+app.get('/api/products/category/:categoryId', (req, res, next) => {
+  const id = req.params.categoryId;
+  const params = [id];
   const sql = `
     select "image",
            "name",
@@ -23,9 +25,10 @@ app.get('/api/products', (req, res, next) => {
            "productId",
            "shortDescription"
     from   "products"
+    where "categoryId" = $1;
   `;
 
-  db.query(sql)
+  db.query(sql, params)
     .then(result => {
       res.json(result.rows);
     })
