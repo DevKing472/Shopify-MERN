@@ -21,7 +21,7 @@ export default class CheckoutForm extends React.Component {
   }
 
   handleBackToCatalog() {
-    this.props.setView('catalog', {});
+    this.props.setView('front', {});
   }
 
   handleSubmit(event) {
@@ -47,7 +47,7 @@ export default class CheckoutForm extends React.Component {
             <label htmlFor="address"><b>Shipping Address</b></label>
             <textarea type="textarea" id="shippingAddress" className="mb-4" value={this.state.shippingAddress} rows="4" onChange={this.handleChange} />
             <div className="d-flex justify-content-between">
-              <div className="hello hover text-muted mb-4 pt-0 px-0 btn d-flex justify-content-start" onClick={() => setView('catalog', {})}>&lt; Continue Shopping</div>
+              <div className="hello hover text-muted mb-4 pt-0 px-0 btn d-flex justify-content-start" onClick={() => setView('front', {})}>&lt; Continue Shopping</div>
               <button type="button" className="btn btn-primary mb-3" id="order" disabled={!isEnabled} onClick={this.handleSubmit}>Place Order</button>
             </div>
           </form>

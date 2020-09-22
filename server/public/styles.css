@@ -12,7 +12,7 @@ body {
 
 .card:hover {
   margin-left: 0 40px;
-  transform: scale(1.1);
+  transform: scale(1.05);
   cursor: pointer;
 }
 
@@ -93,7 +93,9 @@ img {
   background-size: cover;
 }
 
-
+.product {
+  width: 100%;
+}
 
 .product:hover {
   transform: scale(1.03);
@@ -188,6 +190,14 @@ opacity: 0.8;
   line-height: 80px;
 }
 
+.transition-appear {
+  opacity: 0.01;
+}
+
+.transition-appear.transition-appear-active {
+  opacity: 1;
+  transition: opacity 0.5s ;
+}
 
 @media (min-width: 768px) {
   .navbar-nav > li > a {

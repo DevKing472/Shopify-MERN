@@ -21,7 +21,7 @@ export default class CartSummary extends React.Component {
   }
 
   handleSetView() {
-    this.props.setView('catalog', {});
+    this.props.setView('front', {});
   }
 
   displayTotalPrice() {
