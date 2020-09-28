@@ -24,7 +24,7 @@ export default class FrontPage extends React.Component {
         <div className="container" >
           <div className="card-deck d-flex flex-nowrap justify-content-center " >
             <div
-              className="category col-md-5 bgImg1 product m-1"
+              className="category col-md-5 bgImg1 product m-1 mt-5"
               onClick={() => { this.props.setView('catalog', { categoryId: 3 }); }} >
               <div className="content p-3">
                 <h1>Striking</h1>
@@ -32,7 +32,7 @@ export default class FrontPage extends React.Component {
               </div>
             </div>
             <div
-              className="category col-md-5 bgImg2 product m-1"
+              className="category col-md-5 bgImg2 product m-1 mt-5"
               onClick={() => { this.props.setView('catalog', { categoryId: 4 }); }}>
               <div className="content p-3">
                 <h1>Grappling</h1>
@@ -40,7 +40,7 @@ export default class FrontPage extends React.Component {
               </div>
             </div>
             <div
-              className="category col-md-5 bgImg3 product m-1"
+              className="category col-md-5 bgImg3 product m-1 mt-5"
               onClick={() => { this.props.setView('catalog', { categoryId: 5 }); }}>
               <div className="content p-3">
                 <h1>Fitness</h1>
