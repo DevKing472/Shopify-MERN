@@ -88,7 +88,7 @@ img {
 }
 
 .bgImg3 {
-  background-image: url('./images/fitness.jpg');
+  background-image: url('./images/fitness2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -199,11 +199,8 @@ opacity: 0.8;
   transition: opacity 0.5s ;
 }
 
-@media (min-width: 768px) {
-  .navbar-nav > li > a {
-    /* (80px - line-height of 27px) / 2 = 26.5px */
-    padding-top: 26.5px;
-    padding-bottom: 26.5px;
-    line-height: 27px;
+@media (min-width:480px)  {
+  .front-image {
+    background-size: cover
   }
-}
+ }

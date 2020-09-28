@@ -85,10 +85,8 @@ export default class ProductDetails extends React.Component {
                   <h1 className="card-title"><b>{this.state.product.name}</b></h1>
                   <h4 className="card-subtitle mb-2 text-muted">${(this.state.product.price / 100).toFixed(2)}</h4>
                   <p className="card-text">{this.state.product.shortDescription}</p>
-                  <span className="sansFont">Quantity:</span>
-                  <button className="btn incrementers previous border ml-2" onClick={() => this.quantityChange('-')}>-</button><span className="m-2">{this.state.quantity}</span>
-                  <button href="#" className="btn incrementers next border" onClick={() => this.quantityChange('+')}>+</button>
-                  <button type="button" className="btn btn-success ml-2 addToCart" data-toggle="modal" data-target="#ModalViewCart" onClick={() => { this.props.addToCart(this.state.product, this.state.quantity); }}>
+
+                  <button type="button" className="btn btn-success  addToCart" data-toggle="modal" data-target="#ModalViewCart" onClick={() => { this.props.addToCart(this.state.product, this.state.quantity); }}>
                     Add to Cart
                   </button>
                 </div>
