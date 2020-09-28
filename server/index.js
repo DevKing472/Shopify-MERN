@@ -164,33 +164,43 @@ app.post('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/orders', (req, res, next) => {
-  const cartId = req.session.cartId;
-  const name = req.body.name;
-  const creditCard = req.body.creditCard;
-  const shippingAddress = req.body.shippingAddress;
-  if (!cartId) {
-    return res.status(400).send('No cart exists.');
+  const { name, creditCard, shippingAddress } = req.body;
+
+  if (req.session.cartId === undefined ||
+    name === undefined ||
+    creditCard === undefined ||
+    shippingAddress === undefined) {
+    res.status(400).send('Need more information before query the database');
+  } else {
+    const sql = `
+    insert into "orders" ("cartId","name","creditCard", "shippingAddress")
+    values ($1, $2, $3, $4)
+    returning *;
+    `;
+    const values = [req.session.cartId, name, creditCard, shippingAddress];
+    db.query(sql, values)
+      .then(result => {
+        // req.session.destroy(err => {
+        //   if (err) {
+        //     console.error(err);
+        //   } else {
+        const order = result.rows[0];
+        //     res.status(201).json(order);
+        //   }
+        const query = `
+        delete from "cartItems"
+        where "cartId" = $1;
+        `;
+        const value = [req.session.cartId];
+        db.query(query, value)
+          .then(result => {
+            res.status(201).json(order);
+          });
+      })
+      .catch(console.error)
+    ;
   }
-  if (!name) {
-    return res.status(400).send('Please insert your name.');
-  } else if (!creditCard) {
-    return res.status(400).send('Please insert your credit card.');
-  } else if (!shippingAddress) {
-    return res.status(400).send('Please insert the shipping Address.');
-  }
-  const params = [cartId, name, creditCard, shippingAddress];
-  const order = `
-              INSERT into "orders" ("orderId", "cartId", "name", "creditCard", "shippingAddress", "createdAt")
-              VALUES (default, $1, $2, $3, $4, default)
-              RETURNING *
-              `;
-  db.query(order, params)
-    .then(response => response.rows[0])
-    .then(data => {
-      req.session.destroy();
-      res.status(201).json(data);
-    })
-    .catch(error => next(error));
+
 });
 
 app.use('/api', (req, res, next) => {

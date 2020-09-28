@@ -48,10 +48,10 @@ export default class App extends React.Component {
       .catch(error => { console.error(error); });
   }
 
-  addToCart(product) {
+  addToCart(product, amount) {
     fetch('/api/cart/', {
       method: 'POST',
-      body: JSON.stringify(product),
+      body: JSON.stringify(product, amount),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -153,7 +153,6 @@ export default class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({ cart: [] });
-        this.setView('catalog', {});
       })
       .catch(err => console.error(err));
   }
