@@ -4,7 +4,7 @@ export default class Footer extends React.Component {
 
   render() {
     return (
-      <footer className="page-footer bg-dark mt-1 py-5" id="footer" style={{ color: 'white' }}>
+      <footer className="page-footer bg-dark mt-1 py-4" id="footer" style={{ color: 'white' }}>
         <div className="text-center py-3">
           <span style={{ cursor: 'pointer' }} onClick={() => { this.props.setView('front', {}); } }>
             <i className="fas fa-boxing-glove my-3"></i>

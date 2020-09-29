@@ -10,7 +10,7 @@ export default class FrontPage extends React.Component {
 
   render() {
     return (
-      <>
+      <div>
         <div className="carousel slide" style={{ width: '100%' }} data-ride="carousel" data-interval="2000">
           <div className="carousel-inner">
             <div className="carousel-item active front-image front-image-1" >
@@ -49,7 +49,7 @@ export default class FrontPage extends React.Component {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
