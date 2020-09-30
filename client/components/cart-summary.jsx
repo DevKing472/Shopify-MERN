@@ -33,16 +33,18 @@ export default class CartSummary extends React.Component {
   }
 
   render() {
-    return (
-      <>
+
+    if (this.props.array.length > 0) {
+      return (
         <div className="container">
           <div className="row m-0">
-            <div className="col text-secondary backButton">
-              <span>
-                <i onClick={this.handleSetView} className="fas fa-arrow-circle-left mr-4"></i>
-              </span>
-              <span onClick={this.handleSetView} className="backButton ">Back to catalog</span>
-            </div>
+            <span>
+              <div className="click text-muted ml-auto" style={{ cursor: 'pointer', fontSize: '20px' }} onClick={this.handleSetView}>
+                <i className="fas fa-arrow-circle-left mr-2"></i>
+      Back to Catalog
+              </div>
+            </span>
+            {/* <a href="#" className="card-link m-3 text-muted" style={{ cursor: 'pointer', fontSize: '20px' }} onClick={() => { this.props.setView('catalog', { type: this.props.category }); }}> &lt; Back to Content</a> */}
           </div>
           <div className="row m-0">
             <h1><b>My Cart</b></h1>
@@ -54,7 +56,17 @@ export default class CartSummary extends React.Component {
           <button onClick={() => this.props.setView('checkout')} className="btn btn-primary mt-5 mb-5 ml-10">Proceed To Checkout</button>
 
         </div>
-      </>
+      );
+    }
+    return (
+      <div className="container">
+        <div className="click text-muted ml-auto m-4" style={{ cursor: 'pointer', fontSize: '20px' }} onClick={() => { this.props.setView('front', {}); }}>
+          <i className="fas fa-arrow-circle-left mr-2"></i>
+          Back to Home
+        </div>
+        <h1 className="mb-2">My Cart</h1>
+        <h3 className="my-2">Cart is Empty!</h3>
+      </div>
     );
   }
 }

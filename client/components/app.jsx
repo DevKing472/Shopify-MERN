@@ -76,7 +76,7 @@ export default class App extends React.Component {
     const modal = this.state.modalOpen ? <FrontModal close={this.closeModal}></FrontModal> : null;
     if (name === 'front') {
       return (
-        <div>
+        <>
           {modal}
 
           <div id="page-container">
@@ -87,54 +87,59 @@ export default class App extends React.Component {
             </div>
             <Footer />
           </div>
-        </div>
+        </>
       );
     } else if (name === 'catalog') {
       return (
-        <div id="page-container">
-          <div id="content-wrap">
-            <Transition key={name}>
-              <ProductList setView={this.setView} params={params} />
-            </Transition>
+        <>
+          <div id="page-container">
+            <div id="content-wrap">
+              <Transition key={name}>
+                <ProductList setView={this.setView} params={params} />
+              </Transition>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        </>
       );
     } else if (name === 'details') {
       return (
-        <div id="page-container">
-          <div id="content-wrap">
-            <Transition key={name}>
-              <ProductDetails params={params} setView={this.setView} addToCart={this.addToCart} />
-            </Transition>
+        <>
+          <div id="page-container">
+            <div id="content-wrap">
+              <Transition key={name}>
+                <ProductDetails params={params} setView={this.setView} addToCart={this.addToCart} />
+              </Transition>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-
+        </>
       );
     } else if (name === 'cart') {
       return (
-        <div id="page-container">
-          <div id="content-wrap">
-            <Transition key={name}>
-              <CartSummary setView={this.setView} array={this.state.cart} />
-            </Transition>
+        <>
+          <div id="page-container">
+            <div id="content-wrap">
+              <Transition key={name}>
+                <CartSummary setView={this.setView} array={this.state.cart} />
+              </Transition>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-
+        </>
       );
     } else if (name === 'checkout') {
       return (
-        <div id="page-container">
-          <div id="content-wrap">
-            <Transition key={name}>
-              <CheckoutForm cart={this.state.cart} placeOrder={this.placeOrder} setView={this.setView} />
-            </Transition>
+        <>
+          <div id="page-container">
+            <div id="content-wrap">
+              <Transition key={name}>
+                <CheckoutForm cart={this.state.cart} placeOrder={this.placeOrder} setView={this.setView} />
+              </Transition>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-
+        </>
       );
     }
     return null;
@@ -146,8 +151,8 @@ export default class App extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: order.name,
-        creditCard: order.creditCard,
-        shippingAddress: order.shippingAddress
+        creditCard: order.card,
+        shippingAddress: order.address
       })
     })
       .then(res => res.json())
