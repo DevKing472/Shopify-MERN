@@ -45,7 +45,7 @@ export default class ProductList extends React.Component {
                 const { productId } = product;
                 return (
 
-                  <div key={product.productId} className="col-sm-4 col-md-6 col-lg-4 d-flex justify-content-center" onClick={() => setView('details', { categoryId, productId })}>
+                  <div key={product.productId} className="col-md-6 d-flex justify-content-center" onClick={() => setView('details', { categoryId, productId })}>
                     <ProductListItem item={product} />
                   </div>
 
